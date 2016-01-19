@@ -35,15 +35,15 @@ and macro = {
 }
 
 and file = {
-  l_macro = macro list;
-  main = instruction list;
+  l_macro : macro list;
+  main : instruction list;
 }
 
 (*        Inst    immediate   reg1(6bits)/nb(16bits)  reg2(6bits)
 ADD(i) :  0000    0 (1) 
 SOUS(i) : 0001
 AND :     0100
-LSE :     0010     0           000001 (*R1)          000001 (*R1) 
+LSE :     0010     0           000001 (*R1*)          000001 (*R1*) 
 EQZ :     0110
 MOVE(i) : 1000
 NOT :     1100
@@ -70,7 +70,7 @@ MTZ :     1110
 
 
 
-*)
+
 
 
 

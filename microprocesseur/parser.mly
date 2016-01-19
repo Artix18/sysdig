@@ -33,7 +33,7 @@
 %%
 
 file:
-  |DEBMACRO; l_m = macro*; FINMACRO; mon_main = instructrion*; EOF
+  |DEBMACRO; l_m = macro*; FINMACRO; mon_main = instruction*; EOF
     {{l_macro = l_m;
       main = mon_main;
     }}
@@ -48,7 +48,7 @@ macro:
     }}
 ;
 
-instructrion:
+instruction:
   |LMOVE; a1 = IDENT; COMMA; a2 = IDENT;
     {let reg1 =
        try
