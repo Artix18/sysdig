@@ -1,0 +1,41 @@
+Nicolas ASSOUAD
+
+Compilateur de NETLIST
+
+On compile d'abord vers du C avec notre compilateur :
+
+  ./main.byte mon_test.net toto.c -o= o.ROM -MTL= MTL.ROM
+
+main.byte est notre programme
+
+mon_test.net est notre NETLIST que l'on veut compiler
+
+toto.c est le nom du fichier C qui sera produit
+
+-o= o.ROM signifie que la mémoire ROM associé à la variable o dans notre NETLIST 
+doit être lu dans le fichier o.ROM. La syntaxe générale est :
+  -nom_de_une_variable_ROM= fichier.ROM
+Plusieur définition de ROM pour les différentes variables de ROM sont passées en 
+arguments à la suite. Il doit impérativement y avoir autant de fichier ROM que de 
+variables ROM dans la NETLIST, sinon le programme ne compile pas !
+
+On peut optionellement effectuer la commande suivant sur le fichier C pour le 
+rendre plus lisible si l'on veut l'inspecter :
+  indent toto.c
+  
+Il faut ensuite compiler le programme C, cette simple commande suffit :
+  gcc toto.c
+  
+Pour lancer le programme, on lui passera en argument d'abord :
+- le nombre de cycles souhaité, -1 si l'on souhaite un nombre indéterminé de cycles
+- le fichier contenant les inputs
+
+Voici un exemple de lancement pour le circuit RAM.net
+
+  ./main.byte ram.net toto.c
+  indent toto.c
+  gcc toto.c
+  ./a.out 4 inputs_RAM
+(le fichier inputs_RAM contient les entrées pour 4 cycles)
+
+Pour plus de faciliter, on peut modifier le script bash mon_make.sh pour compiler le fichier souhaité.
